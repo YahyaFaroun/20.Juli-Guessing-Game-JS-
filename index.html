@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Number guessing game:1-100</h2>
+    <form action="">
+        <h3>in how many rounds you tink you can guess the number?</h3>
+        <h1 id="versucheUser"></h1>
+       <article id="box">
+            <div>
+                <input type="radio" name="number" id="4times" onclick="getRounds()" checked>
+                <label for="">4</label>
+            </div>
+            <div>
+                <input type="radio" name="number" id="5times" onclick="getRounds()">
+                <label for="">5</label>
+            </div>
+            <div>
+                <input type="radio" name="number" id="6times" onclick="getRounds()">
+                <label for="">6</label>
+            </div>
+            <div>
+                <input type="radio" name="number" id="cutom" onclick="getRounds()">
+                <label for="">custom</label>
+            </div>
+                <input type="number" name="" id="eingabeFensterUser" class="eingabeFensterUser">
+       </article>
+        <div id="ubersichtVersuche"></div>
+    </form>
+    <form action="">
+        <input type="number" name="" id="guessUser">
+        <br>
+        <input type="button" value="guess" id="disableButton" onclick="guess()">
+    </form>
+    <div id="ausgabe"></div>
+    
+    <script src="main.js"></script>
+</body>
+</html>

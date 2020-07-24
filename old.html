@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #customEingabeUser{
+            margin: 10px 0 0 70px;
+            width: 50px;
+            height: 20px;
+            display: none;
+        }
+        #displayHide{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Number Guessing Game 1-100</h1>
+    <section>
+        <form action="">
+            <h3>in how many rounds you tink you can guess the number?</h3>
+            <div id="displayShow"></div>
+            <div id="displayHide" >
+                <input type="radio" name="rounds" id="times4" checked>
+                <label for="">4</label>
+                <input type="radio" name="rounds" id="times5">
+                <label for="">5</label>
+                <br>
+                <input type="radio" name="rounds" id="times6">
+                <label for="">6</label>
+                <input type="radio" name="rounds" id="timesCustom" onclick="showCustom()">
+                <label for="">custom</label>
+                <br>
+                <input type="number" name="" id="customEingabeUser">
+            </div>
+        </form>
+    </section>
+    <section>
+        <form action="">
+            <input type="number" name="" id="userGuessed">
+            <input type="button" value="Guess" onclick="guessGame()" id="start">
+        </form>
+    </section>
+    <div id="ausgabe"></div>
+
+    <script>
+        //inputs
+        let times4 = document.getElementById("times4")
+        let times5 = document.getElementById("times5")
+        let times6 = document.getElementById("times6")
+        let timesCustom = document.getElementById("timesCustom")
+        
+        let customEingabeUser = document.getElementById("customEingabeUser")
+
+        //Display Block
+        let displayBlock = document.getElementById("displayBlock")
+        //outputs
+        let ausgabe = document.getElementById("ausgabe")
+
+        const random = (Math.random() *100).toFixed(0);
+        console.log(random)
+
+        function showCustom(){
+            if (timesCustom.checked){
+                customEingabeUser.style.display = "inline-block"
+            } else {
+                customEingabeUser.style.display = "none"
+                return
+            }
+        }
+
+        function guessGame(){
+            let userGuessed = document.getElementById("userGuessed").value
+            let versuche;
+            let i = 0;
+
+            if(times4.checked){
+                versuche = 4
+            }
+            else if(times5.checked){
+                versuche = 5
+            }
+            else if(times6.checked){
+                versuche = 6
+            } else if(timesCustom.checked)
+                versuche = customEingabeUser.value
+                console.log(versuche)
+       
+
+            console.log(versuche)
+            if(i>= versuche -1){
+                // for (i=0; i<=versuche;i++){
+                i++
+                ausgabe.innerHTML += `${i}. You need to guess lower then ${userGuessed} <br/>`;
+                document.getElementById("displayHide").style.display="none"
+                document.getElementById("displayShow").innerHTML = `<h1>${i} / ${versuche}`
+            }
+            else if(i<= versuche -1){
+                i++;
+                restversuche = versuche - i
+                ausgabe.innerHTML += ` ${i}. You need to guess heigher then ${userGuessed}<br/>`
+                document.getElementById("displayHide").style.display="none"
+                document.getElementById("displayShow").innerHTML = `<h1>${i} / ${versuche}`
+            }
+            else if(userGuessed==random){
+                restversuche = versuche - i
+                ausgabe.innerHTML += `You guessed write after ${i}<br/>`
+                document.getElementById("displayHide").style.display="none"
+                document.getElementById("displayShow").innerHTML = `<h1>${i} / ${versuche}`
+            }
+
+        }
+        
+        
+       
+    </script>
+</body>
+</html>
